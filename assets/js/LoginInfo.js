@@ -12,7 +12,7 @@ function guestUserJoke(){
       //Aaden Fisher
       if(document.getElementById('username').value == 'fish'){ 
          if(document.getElementById('passcode').value == 'skiletfish'){
-          location.href = "https://cnofppzafzyv.github.io/98saafsif8sf6h8980sf8d8h8af9h/saafisMain/users/a1Something";
+          location.href = "/users/misterfisher/index.html";
           }
           else {
           location.href = "https://cnofppzafzyv.github.io/98saafsif8sf6h8980sf8d8h8af9h/12vl1239Blizzard123b3v1v9cas0g/15ad9asd9g7zcx987cbc98b98/guesswhat/guestaV12519x12eJv01jeAsd91jaS09190Xxx/burgerwopperwithUturnSignsForLifeonchair/index.html"
@@ -20,10 +20,9 @@ function guestUserJoke(){
          return false;
        }
       }
-      //Christopher Novales
       if(document.getElementById('username').value == 'supernova'){
         if(document.getElementById('passcode').value == 'itzmV'){
-          location.href = "https://cnofppzafzyv.github.io/98saafsif8sf6h8980sf8d8h8af9h/saafisMain/users/a2Chris/";
+          location.href = "/users/chris/index.html";
           } else {
             location.href = "https://cnofppzafzyv.github.io/98saafsif8sf6h8980sf8d8h8af9h/12vl1239Blizzard123b3v1v9cas0g/15ad9asd9g7zcx987cbc98b98/guesswhat/guestaV12519x12eJv01jeAsd91jaS09190Xxx/burgerwopperwithUturnSignsForLifeonchair/index.html"
           //alert('Wrong Passcode or Username');
@@ -70,7 +69,7 @@ function guestUserJoke(){
       //Avery Rose
       if(document.getElementById('username').value == 'avy'){
         if(document.getElementById('passcode').value == 'ross'){
-          location.href = "https://cnofppzafzyv.github.io/98saafsif8sf6h8980sf8d8h8af9h/saafisMain/users/a3Avery";  
+          location.href = "/users/avery/index.html";  
         } else {
           location.href = "https://cnofppzafzyv.github.io/98saafsif8sf6h8980sf8d8h8af9h/12vl1239Blizzard123b3v1v9cas0g/15ad9asd9g7zcx987cbc98b98/guesswhat/guestaV12519x12eJv01jeAsd91jaS09190Xxx/burgerwopperwithUturnSignsForLifeonchair/index.html"
           return false;
