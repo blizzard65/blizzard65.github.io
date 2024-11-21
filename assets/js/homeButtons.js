@@ -142,9 +142,7 @@ function windowOpener(){
       function handleGo() {
             var action = document.getElementById("actionSelect").value;
 
-            if (action === "iWindow") {
-                changeURL();
-            } else if (action === "window") {
+            if (action === "window") {
                 windowOpener();
             } else if (action === "main") {
                 changeURLCustom();
