@@ -6,10 +6,10 @@
     <link rel="icon" type="image/x-icon" href="websiteAssets/favicons/image.png">
 
     <script src="assets/js/LoginInfo.js"></script>
-<!--There's no way to commit on this, we are going to have to copy and paste everything we do-->
+
     <script>
         var passInput = document.getElementById("passcode");
-        passInput.addEventListener("keypress", function(event) {
+        passInput.addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
                 event.preventDefault();
                 document.getElementById("loginbutton").click();
@@ -25,25 +25,25 @@
             <div class="formtitle">
                 Blizzard Login
             </div>
-    
+
             <div class="input nobottomborder">
                 <div class="inputtext">
                     Username:
                 </div>
-    
+
                 <div class="inputcontent">
                     <input id="username" /><br />
                 </div>
-    
+
                 <div class="inputtext">
                     Password:
                 </div>
-    
+
                 <div class="inputcontent">
                     <input type="password" id="passcode" /><br />
                 </div>
             </div>
-    
+
             <div class="buttons">
                 <input class="orangebutton" id="loginbutton" type="button" value="Login" onclick="checkUser()" />
             </div>
@@ -51,4 +51,4 @@
     </div><!--This is the only thing needed in the HTML for a basic login system-->
 </body>
 
-</html> 
+</html>
