@@ -1,0 +1,114 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* White text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  padding: 0; /* Add some padding */
+}
+
+h1 {
+  text-align: center;
+}
+
+/*------------*/
+.sections {
+  display: flex;
+  align-items: flex-start;
+}
+
+.section {
+  display: inline-block;
+  width: 150px;/*150px original width*/
+  height: 100%;
+}
+/*------------*/
+
+.game-dropdowns, .utilities-dropdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.dropdown {
+  text-align: center;
+  position: relative;
+  margin: 10px;
+}
+
+.dropbtn {
+  background-color: #1f1f1f; /* Dark button background */
+  color: white; /* White text */
+  padding: 15px 20px;
+  position: relative;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px; /* Rounded corners */
+  display: flex; /* Use flex for alignment */
+  align-items: center; /* Center align items */
+}
+
+.dropbtn:hover {
+  background-color: #333; /* Darker on hover */
+}
+
+.indicator {
+  margin-right: 10px; /* Space between indicator and button text */
+  transition: transform 0.3s ease; /* Smooth transition for the indicator */
+}
+
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  left: 50%;
+  background-color: #1f1f1f; /* Same as button */
+  width: 125%;
+  /*overflow: auto;*/
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  overflow-y: auto; /* Enable scrolling */
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Show dropdown on hover */
+}
+
+.dropdown-content a {
+  color: #66ff66; /* Green text to mimic code */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block; /* Use block for full width */
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #333; /* Darker on hover */
+}
+
+/* Blinking cursor style */
+.blinking-cursor {
+  color: #66ff66; /* Same green color */
+  animation: blink 1s step-start infinite; /* Blink animation */
+  margin-left: 5px; /* Space between text and cursor */
+  font-size: 0.9em; /* Slightly smaller size for subtlety */
+}
+
+/* Keyframes for blinking effect */
+@keyframes blink {
+  50% {
+      opacity: 0; /* Hide cursor halfway through the animation */
+  }
+}
+
+/* Change indicator on hover */
+.dropdown:hover .indicator {
+  transform: rotate(90deg); /* Rotate the indicator to face down */
+}
