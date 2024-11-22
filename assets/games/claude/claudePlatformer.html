@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Name - Blizzard</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icons/image.png">
+    <style>
+        canvas {
+            border: 2px solid black;
+            background: #87CEEB;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+        #stats {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .win-message {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="stats">
+        <div id="score">Score: 0</div>
+        <div id="time">Time: 0.00s</div>
+    </div>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score');
+        const timeElement = document.getElementById('time');
+
+        let score = 0;
+        let startTime = Date.now();
+        let gameTime = 0;
+        let gameFinished = false;
+        let rotation = 0;
+
+        const player = {
+            x: 50,
+            y: 200,
+            radius: 20,
+            dy: 0,
+            dx: 0,
+            friction: 0.95,
+            acceleration: 0.5,
+            maxSpeed: 8,
+            isJumping: false,
+        };
+
+        class Platform {
+            constructor() {
+                this.width = 200;
+                this.height = 20;
+                this.speed = (Math.random() * 2 + 1) * (Math.random() < 0.5 ? 1 : -1);
+                this.resetPosition();
+            }
+
+            resetPosition() {
+                if (this.speed > 0) {
+                    this.x = -this.width;
+                } else {
+                    this.x = canvas.width;
+                }
+                this.y = Math.random() * (canvas.height - 150) + 100;
+            }
+
+            update() {
+                this.x += this.speed;
+                if (this.speed > 0 && this.x > canvas.width) {
+                    this.resetPosition();
+                } else if (this.speed < 0 && this.x + this.width < 0) {
+                    this.resetPosition();
+                }
+            }
+        }
+
+        class GoldenBall {
+            constructor() {
+                this.radius = 10;
+                this.resetPosition();
+            }
+
+            resetPosition() {
+                this.x = Math.random() * (canvas.width - 2 * this.radius) + this.radius;
+                this.y = Math.random() * (canvas.height - 2 * this.radius) + this.radius;
+            }
+
+            checkCollision() {
+                const dx = this.x - player.x;
+                const dy = this.y - player.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                return distance < this.radius + player.radius;
+            }
+        }
+
+        const platforms = [
+            { x: 0, y: 350, width: 800, height: 50, speed: 0 },  // Ground
+            ...Array(5).fill(null).map(() => new Platform())
+        ];
+
+        const goldenBalls = Array(3).fill(null).map(() => new GoldenBall());
+
+        const gravity = 0.5;
+        const jumpForce = -12;
+        const keys = {};
+
+        document.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+        });
+
+        document.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+
+        function drawPlayer() {
+            ctx.save();
+            ctx.translate(player.x, player.y);
+            ctx.rotate(rotation);
+
+            // Draw circle
+            ctx.beginPath();
+            ctx.arc(0, 0, player.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Draw cross (now extending to edges)
+            ctx.beginPath();
+            ctx.moveTo(0, -player.radius);
+            ctx.lineTo(0, player.radius);
+            ctx.moveTo(-player.radius, 0);
+            ctx.lineTo(player.radius, 0);
+            ctx.strokeStyle = '#8B4513';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        function drawPlatforms() {
+            platforms.forEach(platform => {
+                ctx.fillStyle = '#4CAF50';
+                ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
+            });
+        }
+
+        function drawGoldenBalls() {
+            goldenBalls.forEach(ball => {
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#FFD700';
+                ctx.fill();
+                ctx.strokeStyle = '#DAA520';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            });
+        }
+
+        function checkCollision(platform) {
+            const playerBottom = player.y + player.radius;
+            const playerTop = player.y - player.radius;
+            const playerRight = player.x + player.radius;
+            const playerLeft = player.x - player.radius;
+
+            return playerRight > platform.x &&
+                   playerLeft < platform.x + platform.width &&
+                   playerBottom > platform.y &&
+                   playerTop < platform.y + platform.height;
+        }
+
+        function handleCollisions() {
+            platforms.forEach(platform => {
+                if (checkCollision(platform)) {
+                    const playerBottom = player.y + player.radius;
+                    const platformTop = platform.y;
+                    
+                    if (player.dy > 0 && playerBottom - player.dy <= platformTop) {
+                        player.y = platform.y - player.radius;
+                        player.dy = 0;
+                        player.isJumping = false;
+                    }
+                }
+            });
+
+            goldenBalls.forEach((ball, index) => {
+                if (ball.checkCollision()) {
+                    score += 1;
+                    scoreElement.textContent = `Score: ${score}`;
+                    ball.resetPosition();
+
+                    if (score >= 50 && !gameFinished) {
+                        gameFinished = true;
+                        const finalTime = ((Date.now() - startTime) / 1000).toFixed(2);
+                        timeElement.innerHTML = `Final Time: ${finalTime}s<br><span class="win-message">Congratulations! You Win!</span>`;
+                    }
+                }
+            });
+        }
+
+        function update() {
+            if (gameFinished) return;
+
+            // Update rotation based on horizontal movement
+            if (player.dx !== 0) {
+                rotation += player.dx * 0.05;
+            }
+
+            // Horizontal movement with momentum
+            if (keys['ArrowLeft']) {
+                player.dx -= player.acceleration;
+                if (player.dx < -player.maxSpeed) player.dx = -player.maxSpeed;
+            } else if (keys['ArrowRight']) {
+                player.dx += player.acceleration;
+                if (player.dx > player.maxSpeed) player.dx = player.maxSpeed;
+            } else {
+                player.dx *= player.friction;
+            }
+
+            // Jumping
+            if (keys['ArrowUp'] && !player.isJumping) {
+                player.dy = jumpForce;
+                player.isJumping = true;
+            }
+
+            // Apply gravity
+            player.dy += gravity;
+
+            // Update position
+            player.x += player.dx;
+            player.y += player.dy;
+
+            // Update platforms
+            platforms.slice(1).forEach(platform => platform.update());
+
+            // Handle collisions
+            handleCollisions();
+
+            // Canvas boundaries
+            if (player.x - player.radius < 0) {
+                player.x = player.radius;
+                player.dx = 0;
+            }
+            if (player.x + player.radius > canvas.width) {
+                player.x = canvas.width - player.radius;
+                player.dx = 0;
+            }
+            if (player.y - player.radius < 0) {
+                player.y = player.radius;
+                player.dy = 0;
+            }
+            if (player.y + player.radius > canvas.height) {
+                player.y = canvas.height - player.radius;
+                player.dy = 0;
+                player.isJumping = false;
+            }
+
+            // Update time if game is not finished
+            if (!gameFinished) {
+                gameTime = (Date.now() - startTime) / 1000;
+                timeElement.textContent = `Time: ${gameTime.toFixed(2)}s`;
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPlatforms();
+            drawGoldenBalls();
+            drawPlayer();
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
+    </script>
+</body>
+</html>
