@@ -12,7 +12,7 @@ function checkUser() {
   //Aaden Fisher-------------------------------------------------
   if (document.getElementById('username').value == 'fish') {
     if (document.getElementById('passcode').value == 'skiletfish') {
-      location.href = "/users/fish/index.html";
+      window.location.href = "/users/fish/index.html";
     }
     else {
       //alert('Wrong Passcode or Username');
