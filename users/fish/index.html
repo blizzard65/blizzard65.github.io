@@ -1,1 +1,69 @@
-<!--TODO: code-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/x-icon" href="../../websiteAssets/favicons/image.png">
+
+        <title>Blizzard</title>
+
+    </head>
+
+    <body>
+
+        <link rel="stylesheet" type="text/css" href="./style.css" />
+        <!-- <link rel="stylesheet" type="text/css" href="./stylish.css" /> -->
+        <script src="../../websiteAssets/JS/unblocker.js"></script>
+        <!-- <script src="../../websiteAssets/JS/blizzardIntro.js"></script> -->
+
+
+        <!-- <div class="intro">
+            <h1 class="logo-header">
+                <span class="logo">Welcome</span>
+                <span class="logo">To</span>
+                <span class="logo">Blizzard</span>
+            </h1>
+        </div> -->
+
+    <header class="headerTopMenu" id="top-bar">
+        <div class="popup-menu" style="padding-top: 5px;">
+            <input class="textbox" type="text" placeholder="Enter URL" id="urlinput">    
+            <select id="actionSelect">
+                    <option value="iWindow">iFrame Window</option>
+                    <option value="window">Popup Window</option>
+                    <option value="main">Main Page</option>
+                    <option value="blank">about:blank</option>
+                </select>
+            <button role="button" onclick="handleGo()"><span>Go</span></button>
+
+            <button onclick="changeURLMain()" role="button" style="top: 0;">Main Page</button>
+            <button onclick="changeURLEncrypt()" role="button" style="top: 0;">Encryptor</button>
+
+            <button onclick="iGoogle()" role="button" style="top: 0;">iGoogle</button>
+            <button onclick="openDiv()" role="button" style="top: 0;">iFrame Browser</button>
+            <button onClick="MyWindow=window.open('https://cnofppzafzyv.github.io/98saafsif8sf6h8980sf8d8h8af9h/12vl1239Blizzard123b3v1v9cas0g/15ad9asd9g7zcx987cbc98b98/guesswhat/asomething/fancyToolbar.html','MyWindow','width=215,height=700'); return false;"" role="button" style="top: 0;">Fancy Toolbar</button>
+
+            <a href="https://cnofppzafzyv.github.io/98saafsif8sf6h8980sf8d8h8af9h/12vl1239Blizzard123b3v1v9cas0g/15ad9asd9g7zcx987cbc98b98/guesswhat/asomething/aboutblank.html" class="cool-link">Bookmark ME</a>
+            <span style="position: absolute; top: 0pt; right: 0pt; font-size: x-large;"><i>(Not you? <a href="https://cnofppzafzyv.github.io/98saafsif8sf6h8980sf8d8h8af9h/saafisMain/login.html">Sign out</a>)</i></span>
+
+        </div>
+    </header>
+
+        <div id="mydiv" style="align-items:center; visibility: hidden; position:absolute;">    
+            <div id="mydivheader">
+                <span id="windowtitle">‎‎‎‎‎</span><button onclick="closeDiv()">X</button></div>
+                <iframe id="skibframe" style="z-index:5;" src="https://www.google.com?igu=1" width="640" height="480"></iframe>
+        </div>
+        <div id="iframeMain">
+            <iframe src="indexIframeStylish.html" id="mainiframe"
+            width=100% height=95% 
+            title="box"
+            allowfullscreen="true" 
+            style="border: 0; height: 95%; left: 0; position: absolute; bottom: 0; width: 100%;"></iframe>
+        </div>
+
+        <script src="script.js"></script>
+
+    </body>
+</html>
