@@ -1,0 +1,5 @@
+Main page: https://cattn.github.io/msgweb/
+
+github repo: https://github.com/Cattn/msgweb
+
+script.js has stuff on discord and webHookApi stuff
