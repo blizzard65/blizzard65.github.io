@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platformer</title>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const player = {
+            x: 200,
+            y: 200,
+            radius: 20,
+            xVelocity: 0,
+            yVelocity: 0,
+            maxSpeed: 5,
+            acceleration: 0.5,
+            deceleration: 0.8,
+            jumpForce: 15,
+            isJumping: false,
+            rotation: 0
+        };
+
+        const camera = {
+            x: 0
+        };
+
+        const sun = {
+            x: 50,
+            y: 50,
+            radius: 30
+        };
+
+        const clouds = [
+            { x: 200, y: 50, speed: 0.2 },
+            { x: 600, y: 100, speed: -0.15 }
+        ];
+
+        const gravity = 0.8;
+        const keys = {};
+
+        // Create terrain
+        const terrainSegments = [];
+        const segmentWidth = 100;
+        const numSegments = 30;
+        const advanceSegments = 10;
+
+        // Define a constant for the ground color
+        const GROUND_COLOR = '#90ee90';
+
+        function generateTerrain() {
+            for (let i = -advanceSegments; i < numSegments + advanceSegments; i++) {
+                terrainSegments.push({
+                    x: i * segmentWidth,
+                    hasTree: Math.random() < 0.3,
+                    flowers: Math.random() < 0.5 ? Math.floor(Math.random() * 3) + 1 : 0
+                });
+            }
+        }
+
+        generateTerrain();
+
+        // Create plus-shaped ball pattern
+        function createBallPattern() {
+            const patternCanvas = document.createElement('canvas');
+            patternCanvas.width = player.radius * 2;
+            patternCanvas.height = player.radius * 2;
+            const patternCtx = patternCanvas.getContext('2d');
+
+            patternCtx.fillStyle = 'white';
+            patternCtx.beginPath();
+            patternCtx.arc(player.radius, player.radius, player.radius, 0, Math.PI * 2);
+            patternCtx.fill();
+
+            patternCtx.fillStyle = 'black';
+            patternCtx.fillRect(player.radius - 2, 0, 4, player.radius * 2);
+            patternCtx.fillRect(0, player.radius - 2, player.radius * 2, 4);
+
+            patternCtx.strokeStyle = 'black';
+            patternCtx.lineWidth = 2;
+            patternCtx.beginPath();
+            patternCtx.arc(player.radius, player.radius, player.radius - 1, 0, Math.PI * 2);
+            patternCtx.stroke();
+
+            return patternCanvas;
+        }
+
+        const ballPattern = createBallPattern();
+
+        function drawSky() {
+            ctx.fillStyle = '#E6F3FF'; //#aed8f2 #51B5FF
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawSun() {
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.strokeStyle = 'orange';
+            ctx.lineWidth = 2;
+            for (let i = 0; i < 12; i++) {
+                const angle = (Math.PI * 2 / 12) * i;
+                const lengthVariation = Math.sin(Date.now() * 0.005 + i) * 5;
+                const startX = sun.x + Math.cos(angle) * (sun.radius + 5);
+                const startY = sun.y + Math.sin(angle) * (sun.radius + 5);
+                const endX = sun.x + Math.cos(angle) * (sun.radius + 15 + lengthVariation);
+                const endY = sun.y + Math.sin(angle) * (sun.radius + 15 + lengthVariation);
+                
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+            }
+        }
+
+        function drawClouds() {
+            ctx.fillStyle = 'white';
+            clouds.forEach(cloud => {
+                ctx.beginPath();
+                ctx.arc(cloud.x, cloud.y, 20, 0, Math.PI * 2);
+                ctx.arc(cloud.x + 15, cloud.y - 10, 15, 0, Math.PI * 2);
+                ctx.arc(cloud.x + 30, cloud.y, 20, 0, Math.PI * 2);
+                ctx.fill();
+
+                cloud.x += cloud.speed;
+                if (cloud.x > canvas.width + 50) cloud.x = -50;
+                if (cloud.x < -50) cloud.x = canvas.width + 50;
+            });
+        }
+
+        function drawPlayer() {
+            ctx.save();
+            ctx.translate(player.x - camera.x, player.y);
+            ctx.rotate(player.rotation);
+            ctx.drawImage(ballPattern, -player.radius, -player.radius);
+            ctx.restore();
+        }
+
+        function drawTree(x, y) {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(x - 10, y - 80, 20, 80);
+
+            ctx.fillStyle = '#228B22';
+            ctx.beginPath();
+            ctx.moveTo(x, y - 120);
+            ctx.lineTo(x - 40, y - 40);
+            ctx.lineTo(x + 40, y - 40);
+            ctx.closePath();
+            ctx.fill();
+			
+			ctx.fillStyle = '#90ee90'
+        }
+
+        function drawFlower(x, y) {
+            ctx.strokeStyle = '#228B22';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x, y - 20);
+            ctx.stroke();
+
+            ctx.fillStyle = '#FF69B4';
+            for (let i = 0; i < 5; i++) {
+                ctx.beginPath();
+                ctx.ellipse(x + Math.cos(i * Math.PI * 2 / 5) * 5, 
+                            y - 20 + Math.sin(i * Math.PI * 2 / 5) * 5, 
+                            5, 3, i * Math.PI * 2 / 5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(x, y - 20, 3, 0, Math.PI * 2);
+            ctx.fill();
+			ctx.fillStyle = '#90ee90'
+        }
+
+        function drawTerrain() {
+            ctx.fillStyle = GROUND_COLOR;
+            terrainSegments.forEach(segment => {
+                // Draw ground
+                ctx.fillRect(segment.x - camera.x, 350, segmentWidth, 50);
+                
+                // Draw animated grass
+                for (let i = 0; i < segmentWidth / 4; i++) {
+                    const x = segment.x + i * 4;
+                    const heightVariation = Math.sin(Date.now() * 0.005 + x * 0.1) * 5;
+                    const height = 15 + heightVariation;
+                    ctx.fillRect(x - camera.x, 350 - height, 2, height);
+                }
+
+                // Draw tree
+                if (segment.hasTree) {
+                    drawTree(segment.x + segmentWidth / 2 - camera.x, 350);
+                }
+
+                // Draw flowers
+                for (let i = 0; i < segment.flowers; i++) {
+                    drawFlower(segment.x + (i + 1) * segmentWidth / (segment.flowers + 1) - camera.x, 350);
+                }
+            });
+        }
+
+        function update() {
+            if (keys['ArrowLeft']) {
+                player.xVelocity -= player.acceleration;
+            } else if (keys['ArrowRight']) {
+                player.xVelocity += player.acceleration;
+            } else {
+                player.xVelocity *= player.deceleration;
+            }
+
+            player.xVelocity = Math.max(Math.min(player.xVelocity, player.maxSpeed), -player.maxSpeed);
+
+            player.x += player.xVelocity;
+            camera.x = player.x - 200;
+
+            player.rotation += player.xVelocity * 0.03;
+
+            player.yVelocity += gravity;
+            player.y += player.yVelocity;
+
+            // Ground collision
+            if (player.y + player.radius > 350) {
+                player.y = 350 - player.radius;
+                player.yVelocity = 0;
+                player.isJumping = false;
+            } else {
+                player.isJumping = true;
+            }
+
+            // Advanced terrain generation
+            while (player.x > (terrainSegments[terrainSegments.length - 1 - advanceSegments].x + segmentWidth)) {
+                terrainSegments.push({
+                    x: terrainSegments[terrainSegments.length - 1].x + segmentWidth,
+                    hasTree: Math.random() < 0.3,
+                    flowers: Math.random() < 0.5 ? Math.floor(Math.random() * 3) + 1 : 0
+                });
+                terrainSegments.shift();
+            }
+
+            while (player.x < terrainSegments[advanceSegments].x) {
+                terrainSegments.unshift({
+                    x: terrainSegments[0].x - segmentWidth,
+                    hasTree: Math.random() < 0.3,
+                    flowers: Math.random() < 0.5 ? Math.floor(Math.random() * 3) + 1 : 0
+                });
+                terrainSegments.pop();
+            }
+        }
+
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            drawSky();
+            drawSun();
+            drawClouds();
+            drawTerrain();
+            drawPlayer();
+            update();
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        document.addEventListener('keydown', (event) => {
+            keys[event.key] = true;
+            if (event.key === 'ArrowUp' && !player.isJumping) {
+                player.yVelocity = -player.jumpForce;
+            }
+        });
+
+        document.addEventListener('keyup', (event) => {
+            keys[event.key] = false;
+        });
+
+        gameLoop();
+    </script>
+</body>
+</html>
