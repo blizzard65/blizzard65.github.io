@@ -71,7 +71,7 @@ dragElement(document.getElementById("mydiv"));
       }
 
       function changeURLEncrypt(){
-        document.getElementById('mainiframe').src = '/98saafsif8sf6h8980sf8d8h8af9h/saafisMain/games/encrypt.html';
+        document.getElementById('mainiframe').src = '/assets/games/encrypt.html';
       }
 
       function changeURLPreview(){
