@@ -1,0 +1,33 @@
+<title>about:blank</title>
+
+<!--Idea! make it so that when you open this bookmark, it will replace this page with the about blank so
+that there is no trace of the other page!!!-->
+<link rel="icon" type="image/x-icon" href="../../websiteAssets/favicons/favicon.png">
+<link rel="stylesheet" type="text/css" href="./style.css" />
+
+<h1 onload="iGoogle()">Launching about:blank, please wait...</h1>
+
+<script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => {
+            iGoogle();
+        }, 3);
+    });
+
+    function iGoogle() {
+        var url = 'index.html'
+        var win = window.open();
+        setTimeout(() => {
+            window.location = "https://google.com/?igu=1"
+        }, 100);
+        win.document.body.style.margin = '0';
+        win.document.body.style.height = '100vh';
+        var iframe = win.document.createElement('iframe');
+        iframe.style.border = 'none';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.margin = '0';
+        iframe.src = url;
+        win.document.body.appendChild(iframe);
+    }
+</script>
