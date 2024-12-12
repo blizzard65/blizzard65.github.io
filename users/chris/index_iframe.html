@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <center>
+    <h1>Blizzard</h1>
+    <!--<a href="#" onclick="windowOpener()">Blizzard in a Window</a><br>-->
+    <a href="#" onClick="MyWindow=window.open('/users/chris/toolbar.html','MyWindow','width=215,height=700'); return false;">Toolbar</a>
+    </center>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="/12vl1239Blizzard123b3v1v9cas0g/15ad9asd9g7zcx987cbc98b98/guesswhat/uas9889a8fishyspecial8dsa9f9a9f6a6g9/burgerwopperwithUturnSignsForLifeonchair/assets/jsfiles/RandomGame.js"></script>
+    <style>
+      #mydiv {
+        position: absolute;
+        z-index: 9;
+        background-color: #f1f1f1;
+        border: 1px solid #d3d3d3;
+      }
+      
+      #mydivheader {
+        cursor: move;
+        z-index: 10;
+        background-color: #052c4c;
+        color: #fff;
+        padding: 2px 0px;
+      }
+      #mydivheader button {
+        float: right;
+        margin-right: 5px;
+      }
+      </style>
+
+<center>
+
+
+  <div id="mydiv" style="align-items:center; visibility: hidden; position:absolute;">
+    
+    <div id="mydivheader">
+      <span id="windowtitle">‎‎‎‎‎</span><button onclick="closeDiv()">X</button></div>
+      <iframe id="skibframe" style="z-index:5;" src="https://www.google.com?igu=1" width="640" height="480"></iframe>
+  </div>
+
+
+<!--<div id="mydiv" class="resizeBox" style="align-items:center; position:absolute;"> <!--a--> 
+    
+  <!--<div id="mydivheader">
+    <span id="windowtitle">‎‎‎‎‎</span>
+    <button onclick="closeDiv()">X</button>
+  </div>
+  <iframe id="skibframe" src="https://www.google.com?igu=1"
+    width=100% height=100% 
+      title="box"
+      allowfullscreen="true" 
+      style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index:5; padding-top: 25px; padding-right: 3px; padding-left: 3px; padding-bottom: 3px; ">
+  </iframe>-->
+</div>
+
+  <div style="display: flex; flex-direction: row;">
+    <div style="flex: 1; padding: 8px;">
+        
+        <h1></h1>
+        
+
+
+      
+      
+      <script>
+      dragElement(document.getElementById("mydiv"));
+      
+      
+      function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (document.getElementById(elmnt.id + "header")) {
+          /* if present, the header is where you move the DIV from:*/
+          document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+        } else {
+          /* otherwise, move the DIV from anywhere inside the DIV:*/
+          elmnt.onmousedown = dragMouseDown;
+        }
+      
+        function dragMouseDown(e) {
+          e = e || window.event;
+          e.preventDefault();
+          // get the mouse cursor position at startup:
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          // call a function whenever the cursor moves:
+          document.onmousemove = elementDrag;
+        }
+      
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          // calculate the new cursor position:
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          // set the element's new position:
+          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+      
+        function closeDragElement() {
+          /* stop moving when mouse button is released:*/
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+        function changeSrc(loc) {
+          document.getElementById('skibframe').src = loc;
+        }
+      }
+
+      function openDiv(){
+        document.getElementById('skibframe').src = 'https://www.google.com?igu=1';
+        document.getElementById('mydiv').style.visibility = 'visible';
+      }
+
+      function changeURL(){
+        document.getElementById('skibframe').src = document.getElementById('urlinput').value;
+      }
+
+      function closeDiv(){
+        document.getElementById('skibframe').src = 'about:blank';
+        document.getElementById('mydiv').style.visibility = 'hidden';
+      }
+
+      function windowOpener(){
+        var url='index.html'
+        var myWindow = window.open("", "iFrame", "width=800,height=600");
+        myWindow.document.body.style.margin = '0';
+        myWindow.document.body.style.height = '100vh';
+        var iframe = myWindow.document.createElement('iframe');
+       iframe.style.border = 'none';
+       iframe.style.width = '100%';
+       iframe.style.height = '100%';
+      iframe.style.margin = '0';
+       iframe.src = url;
+        myWindow.document.body.appendChild(iframe);
+      }
+
+
+      </script>
+      
+          </body>
+
+
+
+  <div>
+    <div class="dropdown" style="z-index: 1;">
+      <button style="width: 100px; height: 50px; z-index: 0;">Game Hubs</button>
+      <div class="dropdown-content" style="max-height: 200px; overflow-y: scroll; left: 20%;">
+        <a rel="noopener" target="_blank" href="assets/Games/nealfun.html">Neal.fun</a>
+        <a rel="noopener" target="_blank" href="assets/Games/tgcofficial.html">TgcOfficial</a>
+        <a rel="noopener" target="_blank" href="assets/Games/NEWgba.html">GBA Emulator</a>
+        <a rel="noopener" target="_blank" href="assets/Games/l.html">Mountain Games</a>
+        <a rel="noopener" target="_blank" href="assets/Games/yurk.html">yurk.com</a>
+        <a rel="noopener" target="_blank" href="assets/Games/twoplayergames.html">Two Player Games</a>
+        <a rel="noopener" target="_blank" href="assets/Games/classworkcc.html">Classwork.cc</a>
+        <a rel="noopener" target="_blank" href="assets/Games/ezpzunblkgerms.html">EZ PZ Unblocked Games</a>
+        
+
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="dropdown" style="z-index: 1;">
+      <button style="width: 100px; height: 50px; z-index: 0;">Sandbox Games</button>
+      <div class="dropdown-content" style="max-height: 200px; overflow-y: scroll; left: 20%;">
+        <a rel="noopener" target="_blank" href="assets/Games/Offline_Download_Versionold.html">Eaglercraft 1.5.2 (old)</a>
+        <a rel="noopener" target="_blank" href="assets/Games/Offline_Download_Version.html">Eaglercraft 1.5.2</a>
+        <a rel="noopener" target="_blank" href="assets/Games/EaglercraftX_1.8_u35_Offline_Signed.html">Eaglercraft 1.8.8</a>
+        <a rel="noopener" target="_blank" href="assets/Games/maze.html">Physics Maze</a>
+        <a rel="noopener" target="_blank" href="assets/Games/sand.html">Falling Sand Game</a>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div>
+    <div class="dropdown" style="z-index: 1;">
+      <button style="width: 100px; height: 50px; z-index: 0;">Car Games</button>
+      <div class="dropdown-content" style="max-height: 200px; overflow-y: scroll; left: 20%;">
+        <a rel="noopener" target="_blank" href="assets/Games/polytrack.html">Poly Track</a>
+        <a rel="noopener" target="_blank" href="assets/Games/drive.html">Drive Mad</a>
+        <a rel="noopener" target="_blank" href="assets/Games/smashkarts.html">Smash Karts</a>
+        <a rel="noopener" target="_blank" href="assets/Games/rocketleague.html">Rocket League</a>
+        <a rel="noopener" target="_blank" href="assets/Games/slowroads.html">Slow Roads</a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="dropdown" style="z-index: 1;">
+      <button style="width: 100px; height: 50px; z-index: 0;">Bloons</button>
+      <div class="dropdown-content" style="max-height: 200px; overflow-y: scroll; left: 20%;">
+        <a rel="noopener" target="_blank" href="assets/Games/btd1.html">Bloons 1</a>
+        <a rel="noopener" target="_blank" href="assets/Games/btd2.html">Bloons 2</a>
+        <a rel="noopener" target="_blank" href="assets/Games/btd3.html">Bloons 3</a>
+        <a rel="noopener" target="_blank" href="assets/Games/btd4.html">Bloons 4</a>
+        <a rel="noopener" target="_blank" href="assets/Games/btd5.html">Bloons 5</a>
+        <a rel="noopener" target="_blank" href="assets/Games/btd6.html">Bloons 6</a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="dropdown" style="z-index: 1;">
+      <button style="width: 100px; height: 50px; z-index: 0;">Mario/Nintendo</button>
+      <div class="dropdown-content" style="max-height: 200px; overflow-y: scroll; left: 20%;">
+        <a rel="noopener" target="_blank" href="assets/Games/OpenSyobonAction.html">Cat Mario</a>
+        <a rel="noopener" target="_blank" href="assets/Games/catmario.html">Cat Mario (Alternate Link)</a>
+        <a rel="noopener" target="_blank" href="assets/Games/jellomario.html">Jelly Mario</a>
+        <a rel="noopener" target="_blank" href="assets/Games/mariofps.html">Gun Mario</a>
+        <a rel="noopener" target="_blank" href="assets/Games/supermario64.html">Super Mario 64</a>
+        <a rel="noopener" target="_blank" href="assets/Games/supermarioallstars.html">Super Mario All Stars</a>
+        <a rel="noopener" target="_blank" href="assets/Games/mariopartnersintime.html">Mario Partners in Time</a>
+        <a rel="noopener" target="_blank" href="assets/Games/punchoutmario.html">Punch Out Mario</a>
+        <a rel="noopener" target="_blank" href="assets/Games/mariokartds.html">Mario Kart DS</a>
+        <a rel="noopener" target="_blank" href="assets/Games/supersmashbros64.html">Super Smash Bros 64</a>
+        <a rel="noopener" target="_blank" href="assets/Games/supermarioworld.html">Super Mario World</a>
+        <a rel="noopener" target="_blank" href="assets/Games/newsupermariobros.html">New Super Mario Bros</a>
+        <a rel="noopener" target="_blank" href="assets/Games/donkeykingcountry.html">Donkey Kong Country</a>
+        <a rel="noopener" target="_blank" href="assets/Games/supermariorpg.html">Super Mario RPG</a>
+        <a rel="noopener" target="_blank" href="assets/Games/goodsupermariobros.html">Good Super Mario Bros</a>
+        <a rel="noopener" target="_blank" href="assets/Games/supermario643D.html">Super Mario 64 3D</a>
+        <a rel="noopener" target="_blank" href="assets/Games/mariomaker.html">Mario Maker</a>
+        <a rel="noopener" target="_blank" href="assets/Games/supermarioworld64.html">Super Mario World 64</a>
+        <a rel="noopener" target="_blank" href="assets/Games/papermario.html">Paper Mario</a>
+        <a rel="noopener" target="_blank" href="assets/Games/legendofzelda.html">Legend of Zelda</a>
+      </div>
+    </div>
+  </div>
+  
+
+
+  
+
+    </div>
+
+      <p style="position: relative; bottom: 0pt; text-align:center">Drag <a href="aboutblank.html">Legacy Blank</a> or <a href="https://cnofppzafzyv.github.io/98saafsif8sf6h8980sf8d8h8af9h/blob/main/12vl1239Blizzard123b3v1v9cas0g/15ad9asd9g7zcx987cbc98b98/guesswhat/a9sd80f8080dsfhcritthefurspecial10sf/burgerwopperwithUturnSignsForLifeonchair/aboutblank.html">Modern Blank</a> to your bookmarks</p><br>
+    <div style="flex: 1; padding: 8px;">
+            
+
+        <h1></h1>
+<div>
+    <div class="dropdown" style="z-index: 1;">
+      <button style="width: 100px; height: 50px;">Utilities</button>
+      <div class="dropdown-content" style="max-height: 200px; overflow-y: scroll; left: 65%;">
+        <a rel="noopener" target="_blank" href="assets/Games/testingpage.html">Feature Testing Page</a>
+        <a rel="noopener" target="_blank" href="simpleText.html">Text Editor</a>
+        <a rel="noopener" target="_blank" href="assets/Games/htmlpreview.html">HTML Preview</a>
+        <a rel="noopener" target="_blank" href="assets/Games/ruffle.html">Ruffle (Flash Emulator)</a>
+        <a rel="noopener" target="_blank" href="assets/Games/yes.html">yes</a>
+        <a rel="noopener" target="_blank" href="assets/memorial/memorial.html">Memorial</a>
+        <a rel="noopener" target="_blank" href="assets/Games/archive.html">Archive.org</a>
+        <a rel="noopener" target="_blank" href="assets/Games/iSearch.html">iSearch</a>
+        <a rel="noopener" target="_blank" href="assets/Games/mail.html">Temporary Disposable Email</a>
+        <a rel="noopener" target="_blank" href="assets/Games/encrypt.html">Message Encryption</a>
+        <a rel="noopener" target="_blank" href="assets/Games/v86.html">Virtual x86</a>
+        <a rel="noopener" target="_blank" href="assets/Games/badcalculator.html">Bad Graphing Calculator</a>
+        <a rel="noopener" target="_blank" href="https://735a67366e347a62544d4d664635545175.hackingtons.dev/#">Fish Hackington</a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="dropdown" style="z-index: 1;">
+      <button style="width: 100px; height: 50px; z-index: 0;">Random Games</button>
+      <div class="dropdown-content" style="max-height: 200px; overflow-y: scroll; left: 65%;">
+        <a rel="noopener" target="_blank" href="assets/Games/claudePlatformer.html">Coin Platformer - Claude</a>
+        <a rel="noopener" target="_blank" href="assets/Games/platformer.html">Peaceful Platformer - Claude</a>
+        <a rel="noopener" target="_blank" href="assets/Games/cookie.html">Cookie Clicker</a>
+        <a rel="noopener" target="_blank" href="assets/Games/minecraftraytracing.html">Raytraced Minecraft</a>
+        <a rel="noopener" target="_blank" href="assets/Games/paperminecraft.html">Paper Minecraft</a>
+        <a rel="noopener" target="_blank" href="assets/Games/cubefield.html">Cubefield</a>
+        <a rel="noopener" target="_blank" href="assets/Games/hockey.html">Electric Hockey</a>
+        <a rel="noopener" target="_blank" href="assets/Games/thirtydollar.html">Thirty Dollar Website</a>
+        <a rel="noopener" target="_blank" href="assets/Games/typeracer.html">Type Racer</a>
+        <a rel="noopener" target="_blank" href="/12vl1239Blizzard123b3v1v9cas0g/15ad9asd9g7zcx987cbc98b98/guesswhat/uas9889a8fishyspecial8dsa9f9a9f6a6g9/burgerwopperwithUturnSignsForLifeonchair/assets/AndrewsGame/OhNoes.html">Andrew's Oh Noes Game</a>
+        <a rel="noopener" target="_blank" href="assets/Games/defly.html">Defly.io</a>
+        <a rel="noopener" target="_blank" href="assets/Games/evoworld.html">Evo World</a>
+        <a rel="noopener" target="_blank" href="assets/Games/stabfish.html">Stab Fish</a>
+        <a rel="noopener" target="_blank" href="assets/Games/florr.html">Florr.io</a>
+        <a rel="noopener" target="_blank" href="assets/Games/pixelcombat.html">Pixel Combat</a>
+        <a rel="noopener" target="_blank" href="assets/Games/stienworld.html">Stein World</a>
+        <a rel="noopener" target="_blank" href="assets/Games/orcvselve.html">Orcs vs Elves</a>
+        <a rel="noopener" target="_blank" href="assets/Games/starveio.html">Starve.io</a>
+        <a rel="noopener" target="_blank" href="assets/Games/lordzio.html">Lordz.io</a>
+        <a rel="noopener" target="_blank" href="assets/Games/brutalio.html">Brutal.io</a>
+        <a rel="noopener" target="_blank" href="assets/Games/synergism.html">Synergism</a>
+        <!--Not working right now, may work later<a rel="noopener" target="_blank" href="assets/Games/sceneexio.html">Scenexe.io</a>-->
+        <a rel="noopener" target="_blank" href="assets/Games/humanbenchmark.html">Human Benchmark</a>
+        <a rel="noopener" target="_blank" href="assets/Games/clusterrush.html">Cluster Rush</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+    <div class="dropdown" style="z-index: 1;">
+      <button style="width: 100px; height: 50px; z-index: 0;">Platformers</button>
+      <div class="dropdown-content" style="max-height: 200px; overflow-y: scroll; left: 65%;">
+        <a rel="noopener" target="_blank" href="assets/Games/platformer.html">Peaceful Platformer</a>
+        <a rel="noopener" target="_blank" href="assets/Games/geometry.html">Geometry Dash</a>
+        <a rel="noopener" target="_blank" href="assets/Games/justaplatformer.html">JustAPlatformer</a>
+        <a rel="noopener" target="_blank" href="assets/Games/marble.html">Marble Blast</a>
+        <a rel="noopener" target="_blank" href="assets/Games/dino.html">Chrome Dino Game</a>
+        <a rel="noopener" target="_blank" href="assets/Games/ovoT.html">Ovo</a>
+        <a rel="noopener" target="_blank" href="assets/Games/doodle.html">Doodle Jump</a>
+        <a rel="noopener" target="_blank" href="assets/Games/OpenSyobonAction.html">Cat Mario</a>
+        <a rel="noopener" target="_blank" href="assets/Games/catmario.html">Cat Mario (Alternate Link)</a>
+        <a rel="noopener" target="_blank" href="assets/Games/jellomario.html">Jelly Mario</a>
+        <a rel="noopener" target="_blank" href="assets/Games/hollowknightfangame.html">Hollow Knight</a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="dropdown" style="z-index: 1;">
+      <button style="width: 100px; height: 50px; z-index: 0;">Strategy Games</button>
+      <div class="dropdown-content" style="max-height: 200px; overflow-y: scroll; left: 65%;">
+        <a rel="noopener" target="_blank" href="assets/Games/minesweeper.html">Multi Minesweeper</a>
+        <a rel="noopener" target="_blank" href="assets/Games/solitaire.html">Solitaire</a>
+        <a rel="noopener" target="_blank" href="assets/Games/tetris.html">Tetris</a>
+        <a rel="noopener" target="_blank" href="assets/Games/trimpy.html">Trimps</a>
+        <a rel="noopener" target="_blank" href="assets/Games/Uno.html">Uno Vs. Bots</a>
+        <a rel="noopener" target="_blank" href="assets/Games/Portal.html">2D Portal</a>
+        <a rel="noopener" target="_blank" href="assets/Games/territorial.html">Territorial</a>
+        <a rel="noopener" target="_blank" href="assets/Games/fnaf.html">Five Nights at Freddy's</a>
+        <a rel="noopener" target="_blank" href="assets/Games/fivenightswinstons.html">Five Nights at Winston's</a>
+        <a rel="noopener" target="_blank" href="assets/Games/onlinechess.html">Chess</a>
+        <a rel="noopener" target="_blank" href="assets/Games/fireboiwatergirl.html">Fire Boy and Water Girl</a>
+        <a rel="noopener" target="_blank" href="assets/Games/impossibleQuiz.html">The Impossible Quiz</a>
+        <a rel="noopener" target="_blank" href="assets/Games/tinyislands.html">Tiny Islands</a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="dropdown" style="z-index: 1;">
+      <button style="width: 100px; height: 50px; z-index: 0;">Shooter Games</button>
+      <div class="dropdown-content" style="max-height: 200px; overflow-y: scroll; left: 65%;">
+        <a rel="noopener" target="_blank" href="assets/Games/ev.html">ev.io</a>
+        <a rel="noopener" target="_blank" href="assets/Games/deadshot.html">DeadShot.io</a>
+        <a rel="noopener" target="_blank" href="assets/Games/mariofps.html">Gun Mario</a>
+        <a rel="noopener" target="_blank" href="assets/Games/1v1.html">1v1.lol</a>
+        <a rel="noopener" target="_blank" href="assets/Games/zombsroyale.html">Zombs Royale</a>
+        <a rel="noopener" target="_blank" href="assets/Games/arras.html">Arras.io</a>
+        <a rel="noopener" target="_blank" href="assets/Games/castelworld.html">Castel Wars Modern</a>
+        <a rel="noopener" target="_blank" href="assets/Games/halflife.html">Half Life</a>
+      </div>
+    </div>
+  </div>
+
+
+
+    </div>
+
+</div>
+
+  
+  
+</center>
+
+
+
+<br>
+ 
+  </body>
+</html>
