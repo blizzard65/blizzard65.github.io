@@ -1,0 +1,94 @@
+<title>about:blank</title>
+
+<link rel="stylesheet" type="text/css" href="./styleblank.css" />
+
+<div class="intro">
+  <h1 class="logo-header">
+      <span class="logo">Welcome</span>
+      <span class="logo">To</span>
+      <span class="logo">Blizzard</span>
+  </h1>
+</div>
+
+<h1 onload="iGoogle()">Launching about:blank, please wait...</h1>
+
+<script>
+  // Blizzard intro---------------------------------
+let intro = document.querySelector('.intro');
+let logo = document.querySelector('.logo-header');
+let logoSpan = document.querySelectorAll('.logo');
+
+window.addEventListener('DOMContentLoaded', ()=> {
+
+    setTimeout(()=>{
+
+        logoSpan.forEach((span, idx)=>{
+            setTimeout(()=>{
+                span.classList.add('active');
+            }, (idx + 1) * 400)
+        })
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+
+                setTimeout(()=>{
+                    span.classList.remove('active');
+                    span.classList.add('fade');
+                }, (idx + 1) * 50)
+            },2000)
+        })
+
+        setTimeout(()=>{
+            intro.style.top = '-100vh';
+        },2300)
+
+
+
+    })
+})
+</script>
+
+<script defer>
+document.addEventListener("DOMContentLoaded", function() {
+  setTimeout(()=>{
+    iGoogle();
+    }, 3000);
+});
+
+    /*function iGoogle() {
+    var url = 'index.html'
+    var win = window.open();
+    win.document.body.style.margin = '0';
+    win.document.body.style.height = '100vh';
+    var iframe = win.document.createElement('iframe');
+    iframe.style.border = 'none';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.margin = '0';
+    iframe.src = url;
+    win.document.body.appendChild(iframe);
+    } */
+    
+    function iGoogle() {
+    var url = 'index.html'
+    var win = window.open();
+    /*window.location.replace("https://www.google.com/");*/
+    setTimeout(()=>{
+    window.location = "https://google.com/?igu=1";
+    //testing the resize current window
+    window.innerWidth = '150';
+    window.innerHeight = '150';
+    //testing the resize current window
+    }, 250);
+    win.document.body.style.margin = '0';
+    win.document.body.style.height = '100vh';
+    var iframe = win.document.createElement('iframe');
+    iframe.style.border = 'none';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.margin = '0';
+    iframe.src = url;
+    win.document.body.appendChild(iframe);
+    MyWindow=window.open('/users/chris/toolbar.html','MyWindow','width=215,height=700'); return false;
+    }
+</script>

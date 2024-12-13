@@ -1,0 +1,55 @@
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>simpleText</title>
+</head>
+<body>
+    <button onclick="openFile()">Open</button>
+    <button onclick="saveText()">Save</button>
+    <p><input type="text" id="filename" placeholder="File Name">.txt</p>
+    <textarea style="resize:none" id="editor" rows="10" cols="50"></textarea>
+    <script>
+        function saveText() {
+    var editor = document.getElementById("editor");
+    var text = editor.value;
+    var filename = document.getElementById("filename").value;
+
+    if (!filename) {
+        filename = "NO_NAME";
+    }
+
+    var blob = new Blob([text], { type: "text/plain" });
+    var url = URL.createObjectURL(blob);
+
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename + ".txt"; // Add the .txt extension
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
+
+function openFile() {
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = '.txt'; // Accept only text files
+
+    fileInput.addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var text = event.target.result;
+                document.getElementById('editor').value = text;
+                document.getElementById('filename').value = file.name;
+            };
+            reader.readAsText(file);
+            fileInput.click();
+        }
+    });
+
+    fileInput.click();
+}
+    </script>
+</body>
+</html>
