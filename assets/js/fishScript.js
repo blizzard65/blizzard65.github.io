@@ -105,7 +105,7 @@ dragElement(document.getElementById("mydiv"));
       }
 
       function changeURLMain(){
-        document.getElementById('mainiframe').src = 'indexIframeOfficial.html';
+        document.getElementById('mainiframe').src = 'darkIndexIframe.html';
       }
 
       function changeURLGames(){
