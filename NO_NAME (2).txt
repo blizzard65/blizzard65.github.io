@@ -1,1 +1,1 @@
-yo so i set it up with vercel, i think i have to push for it to show up so here is a garbage commit that should push all the files to vercel YAY
+VERCEL IS SO GREAT
