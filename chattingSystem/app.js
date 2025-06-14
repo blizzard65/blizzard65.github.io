@@ -4,7 +4,7 @@
 // );
 
   const { createClient } = supabase
-  const _supabase = createClient('https://xyzcompany.supabase.co', 'public-anon-key')
+  const _supabase = createClient('https://vpbiokohfyslgudzesot.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYmlva29oZnlzbGd1ZHplc290Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk4ODI2NDgsImV4cCI6MjA2NTQ1ODY0OH0.sQHNxJNnXe92QAf-yMmEJseWT1fblY0K3mC6NgbdwUw')
 
   console.log('Supabase Instance: ', _supabase)
   // ...
