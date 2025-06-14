@@ -9,3 +9,8 @@
 .avatar-username {
     font-size: 10px;
 }
+
+.timestamp {
+    text-align: right;
+    font-size: 8px;
+}
