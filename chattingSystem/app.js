@@ -8,8 +8,8 @@ const messagesElement = document.querySelector('#messages');
 function addMessagesToPage(message) {
   const element = document.createElement('li');
   element.classList.add('card', 'm-2');
-  element.innerHTML = '
-    < div class="card-body" >
+  element.innerHTML = `
+    <div class = "card-body">
                         <div class="row">
                             <div class="col-sm-2 avatar-container">
                                 <!-- <image
@@ -25,7 +25,7 @@ function addMessagesToPage(message) {
                             <p class="col-sm-12 timestamp">${message.created_at}</p>
                         </div>
                     </div >
-    ';
+    `;
     messagesElement.append(element)
 }
 
