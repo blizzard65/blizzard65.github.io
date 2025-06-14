@@ -9,7 +9,7 @@
   console.log('Supabase Instance: ', _supabase)
   // ...
 
-const messagesElement = document.querySelector('#messages');
+const messageElement = document.querySelector('#messages');
 
 function addMessagesToPage(message) {
   const element = document.createElement('li');
@@ -32,15 +32,15 @@ function addMessagesToPage(message) {
                         </div>
                     </div >
     `;
-  messagesElement.append(element);
+  messageElement.append(element);
 }
 
 async function startUp() {
-  let { data: messages, error } = await supabase
-    .from('messages')
+  let { data: message, error } = await supabase
+    .from('message')
     .select('*')
 
-  messages.forEach(addMessagesToPage);
+  message.forEach(addMessagesToPage);
 }
 
 startUp();
