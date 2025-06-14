@@ -36,3 +36,5 @@ async function init() {
 
   messages.forEach(addMessagesToPage);
 }
+
+init();
