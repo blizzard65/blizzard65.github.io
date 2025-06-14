@@ -26,7 +26,7 @@ function addMessagesToPage(message) {
                         </div>
                     </div >
     `;
-    messagesElement.append(element)
+  messagesElement.append(element);
 }
 
 async function init() {
