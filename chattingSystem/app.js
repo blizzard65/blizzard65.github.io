@@ -46,4 +46,4 @@ async function init() {
 init();
 // I DON'T GET IT, I HAVE BEEN CODING ALL NIGHT,
 //  NO SLEEP, SLEEP IS FOR THE WEAK, WHY DOES THIS NOT WORK :|
-// Nice, we have some progress, I'm not getting an error from consol about the user thingy, now it just an err from init();
+// Nice, we have some progress, I'm not getting an error from consol about the user thingy, now it just an err from init(); It is now 7:09 am, I started working on this around like 10-11pm
