@@ -38,3 +38,5 @@ async function init() {
 }
 
 init();
+// I DON'T GET IT, I HAVE BEEN CODING ALL NIGHT,
+//  NO SLEEP, SLEEP IS FOR THE WEAK, WHY DOES THIS NOT WORK :|
