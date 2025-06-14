@@ -3,3 +3,6 @@ Main page: https://cattn.github.io/msgweb/
 github repo: https://github.com/Cattn/msgweb
 
 script.js has stuff on discord and webHookApi stuff
+
+Fish: I did a quick look through and the repo script.js that I saw 
+only had stuff on music, unless there was another js file that I did not see
